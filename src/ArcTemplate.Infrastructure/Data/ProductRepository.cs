@@ -25,18 +25,18 @@ namespace ArcTemplate.Infrastructure.Data
             {
                 var parameters = new { ProductId = id };
 
-                _logger.LogInformation($"Executing stored procedure GetProductById with parameter: {id}");
+                _logger.LogInformation($"Executing stored procedure get_product_by_id with parameter: {id}");
 
                 var product = connection.Query(
-                                    "get_product_by_id",
-                                    parameters,
-                                    commandType: CommandType.StoredProcedure
-                                ).Select(row => new Product
-                                {
-                                    Id = row.product_id,
-                                    Name = row.product_name,
-                                    Price = row.list_price
-                                }).FirstOrDefault();
+                    "get_product_by_id",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                ).Select(row => new Product
+                {
+                    Id = row.product_id,
+                    Name = row.product_name,
+                    Price = row.list_price
+                }).FirstOrDefault();
 
                 if (product == null)
                 {
