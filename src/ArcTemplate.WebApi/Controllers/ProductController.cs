@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using ArcTemplate.Application.UseCases.GetProduct;
 using System.Threading.Tasks;
+using ArcTemplate.Application.UseCases.GetAllProducts;
 
 namespace ArcTemplate.WebApi.Controllers
 {
@@ -28,6 +29,21 @@ namespace ArcTemplate.WebApi.Controllers
             {
                 _logger.LogWarning($"Product with id {id} not found.");
                 return NotFound();
+            }
+
+            return Ok(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllProducts()
+        {
+            var request = new GetAllProductsRequest();
+            var response = await _mediator.Send(request);
+
+            if (!response.Any())
+            {
+                _logger.LogWarning("No products found.");
+                return NoContent();
             }
 
             return Ok(response);

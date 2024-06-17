@@ -46,5 +46,19 @@ namespace ArcTemplate.Infrastructure.Data
                 return product;
             }
         }
+
+        public IEnumerable<Product> GetAllProducts()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                _logger.LogInformation("Executing stored procedure get_all_products");
+
+                var products = connection.Query<Product>(
+                    "get_all_products",
+                    commandType: CommandType.StoredProcedure);
+
+                return products;
+            }
+        }
     }
 }
