@@ -1,0 +1,6 @@
+@ArcTemplate.WebApi_HostAddress = http://localhost:5062
+
+GET {{ArcTemplate.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
