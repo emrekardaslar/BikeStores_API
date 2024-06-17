@@ -10,10 +10,12 @@ namespace ArcTemplate.WebApi.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<ProductController> _logger;
 
-        public ProductController(IMediator mediator)
+        public ProductController(IMediator mediator, ILogger<ProductController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("{id}")]
@@ -21,7 +23,15 @@ namespace ArcTemplate.WebApi.Controllers
         {
             var request = new GetProductRequest { Id = id };
             var response = await _mediator.Send(request);
+
+            if (response == null)
+            {
+                _logger.LogWarning($"Product with id {id} not found.");
+                return NotFound();
+            }
+
             return Ok(response);
         }
     }
+
 }
