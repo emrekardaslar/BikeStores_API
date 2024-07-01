@@ -35,7 +35,8 @@ namespace ArcTemplate.Infrastructure.Data
                 {
                     Id = row.product_id,
                     Name = row.product_name,
-                    Price = row.list_price
+                    Price = row.list_price,
+                    BrandId = row.brand_id
                 }).FirstOrDefault();
 
                 if (product == null)

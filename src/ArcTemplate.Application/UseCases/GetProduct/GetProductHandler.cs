@@ -17,7 +17,7 @@ namespace ArcTemplate.Application.UseCases.GetProduct
         public Task<GetProductResponse> Handle(GetProductRequest request, CancellationToken cancellationToken)
         {
             var product = _productRepository.GetProductById(request.Id);
-            return Task.FromResult(new GetProductResponse { Id = product.Id, Name = product.Name, Price = product.Price });
+            return Task.FromResult(new GetProductResponse { Id = product.Id, Name = product.Name, Price = product.Price, BrandId = product.BrandId });
         }
     }
 }
