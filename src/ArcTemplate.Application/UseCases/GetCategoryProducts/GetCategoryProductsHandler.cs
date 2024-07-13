@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace ArcTemplate.Application.UseCases.GetCategoryProducts
 {
+    public class ProductDto
+    {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string Brand { get; set; }
+    }
     public class GetCategoryProductsRequest : IRequest<GetCategoryProductsResponse>
     {
         public string Name { get; set; }
@@ -15,7 +21,7 @@ namespace ArcTemplate.Application.UseCases.GetCategoryProducts
 
     public class GetCategoryProductsResponse
     {
-        public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<ProductDto> Products { get; set; }
     }
 
     public class GetCategoryProductsHandler : IRequestHandler<GetCategoryProductsRequest, GetCategoryProductsResponse>
@@ -33,12 +39,11 @@ namespace ArcTemplate.Application.UseCases.GetCategoryProducts
 
             var response = new GetCategoryProductsResponse
             {
-                Products = products.Select(p => new Product
+                Products = products.Select(p => new ProductDto
                 {
-                    Id = p.Id, 
                     Name = p.Name,
                     Price = p.Price,
-                    BrandName = p.BrandName
+                    Brand = p.BrandName
                 }).ToList()
             };
 

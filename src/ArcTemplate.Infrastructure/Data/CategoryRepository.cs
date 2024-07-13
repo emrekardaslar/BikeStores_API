@@ -40,7 +40,8 @@ namespace ArcTemplate.Infrastructure.Data
                     return new Product
                     {
                         Name = row.product_name,
-                        Price = row.list_price
+                        Price = row.list_price,
+                        BrandName = row.brand_name,
                     };
                 });
 
