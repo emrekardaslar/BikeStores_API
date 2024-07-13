@@ -6,5 +6,8 @@ namespace ArcTemplate.Core.Entities
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int BrandId { get; set; }
+        public int BrandName { get; set; }
+        public int CategoryId { get; set; }
     }
 }
+//TODO: make DTOs

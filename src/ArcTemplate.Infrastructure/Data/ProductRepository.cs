@@ -36,7 +36,8 @@ namespace ArcTemplate.Infrastructure.Data
                     Id = row.product_id,
                     Name = row.product_name,
                     Price = row.list_price,
-                    BrandId = row.brand_id
+                    BrandId = row.brand_id,
+                    CategoryId = row.category_id
                 }).FirstOrDefault();
 
                 if (product == null)
@@ -54,9 +55,17 @@ namespace ArcTemplate.Infrastructure.Data
             {
                 _logger.LogInformation("Executing stored procedure get_all_products");
 
-                var products = connection.Query<Product>(
-                    "get_all_products",
-                    commandType: CommandType.StoredProcedure);
+                var products = connection.Query<dynamic>(
+               "get_all_products",
+               commandType: CommandType.StoredProcedure)
+                    .Select(row => new Product
+                    {
+                        Id = row.product_id,
+                        Name = row.product_name,
+                        Price = row.list_price,
+                        BrandId = row.brand_id,
+                        CategoryId = row.category_id
+                    });
 
                 return products;
             }
