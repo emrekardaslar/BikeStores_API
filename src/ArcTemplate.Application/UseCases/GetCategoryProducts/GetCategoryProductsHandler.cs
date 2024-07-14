@@ -14,7 +14,7 @@ namespace ArcTemplate.Application.UseCases.GetCategoryProducts
         public decimal Price { get; set; }
         public string Brand { get; set; }
     }
-    public class GetCategoryProductsRequest : IRequest<GetCategoryProductsResponse>
+    public class GetCategoryProductsQuery : IRequest<GetCategoryProductsResponse>
     {
         public string Name { get; set; }
     }
@@ -24,7 +24,7 @@ namespace ArcTemplate.Application.UseCases.GetCategoryProducts
         public IEnumerable<ProductDto> Products { get; set; }
     }
 
-    public class GetCategoryProductsHandler : IRequestHandler<GetCategoryProductsRequest, GetCategoryProductsResponse>
+    public class GetCategoryProductsHandler : IRequestHandler<GetCategoryProductsQuery, GetCategoryProductsResponse>
     {
         private readonly ICategoryRepository _categoryRepository;
 
@@ -33,7 +33,7 @@ namespace ArcTemplate.Application.UseCases.GetCategoryProducts
             _categoryRepository = categoryRepository;
         }
 
-        public Task<GetCategoryProductsResponse> Handle(GetCategoryProductsRequest request, CancellationToken cancellationToken)
+        public Task<GetCategoryProductsResponse> Handle(GetCategoryProductsQuery request, CancellationToken cancellationToken)
         {
             var products = _categoryRepository.GetCategoryProducts(request.Name);
 

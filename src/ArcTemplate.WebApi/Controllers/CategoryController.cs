@@ -22,8 +22,7 @@ namespace ArcTemplate.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCategoryProducts(string name)
         {
-            var request = new GetCategoryProductsRequest { Name = name };
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(new GetCategoryProductsQuery { Name = name });
 
             if (response == null)
             {
