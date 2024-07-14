@@ -21,8 +21,7 @@ namespace ArcTemplate.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBrand(int id)
         {
-            var request = new GetBrandRequest { Id = id };
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(new GetBrandByIdQuery { Id = id });
 
             if (response == null)
             {

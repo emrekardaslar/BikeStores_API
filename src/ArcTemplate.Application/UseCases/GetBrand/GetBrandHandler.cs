@@ -5,7 +5,7 @@ using ArcTemplate.Core.Interfaces;
 
 namespace ArcTemplate.Application.UseCases.GetBrand
 {
-    public class GetBrandHandler : IRequestHandler<GetBrandRequest, GetBrandResponse>
+    public class GetBrandHandler : IRequestHandler<GetBrandByIdQuery, GetBrandResponse>
     {
         private readonly IBrandRepository _BrandRepository;
 
@@ -14,7 +14,7 @@ namespace ArcTemplate.Application.UseCases.GetBrand
             _BrandRepository = BrandRepository;
         }
 
-        public Task<GetBrandResponse> Handle(GetBrandRequest request, CancellationToken cancellationToken)
+        public Task<GetBrandResponse> Handle(GetBrandByIdQuery request, CancellationToken cancellationToken)
         {
             var Brand = _BrandRepository.GetBrandById(request.Id);
             return Task.FromResult(new GetBrandResponse { Id = Brand.Id, Name = Brand.Name });
