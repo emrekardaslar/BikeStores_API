@@ -8,9 +8,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ArcTemplate.Application.UseCases.GetAllBrands
 {
-    public class GetAllBrandsRequest : IRequest<IEnumerable<Brand>> { }
+    public class GetAllBrandsQuery : IRequest<IEnumerable<Brand>> { }
 
-    public class GetAllBrandsHandler : IRequestHandler<GetAllBrandsRequest, IEnumerable<Brand>>
+    public class GetAllBrandsHandler : IRequestHandler<GetAllBrandsQuery, IEnumerable<Brand>>
     {
         private readonly IBrandRepository _BrandRepository;
         private readonly ILogger<GetAllBrandsHandler> _logger;
@@ -21,7 +21,7 @@ namespace ArcTemplate.Application.UseCases.GetAllBrands
             _logger = logger;
         }
 
-        public async Task<IEnumerable<Brand>> Handle(GetAllBrandsRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Brand>> Handle(GetAllBrandsQuery request, CancellationToken cancellationToken)
         {
             var Brands = _BrandRepository.GetAllBrands();
 

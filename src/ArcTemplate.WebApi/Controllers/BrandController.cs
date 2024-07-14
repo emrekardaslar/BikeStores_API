@@ -36,8 +36,7 @@ namespace ArcTemplate.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBrands()
         {
-            var request = new GetAllBrandsRequest();
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(new GetAllBrandsQuery());
 
             if (!response.Any())
             {
