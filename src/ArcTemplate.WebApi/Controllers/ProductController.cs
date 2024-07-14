@@ -22,8 +22,7 @@ namespace ArcTemplate.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
-            var request = new GetProductRequest { Id = id };
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(new GetProductQuery { Id = id });
 
             if (response == null)
             {
@@ -37,8 +36,7 @@ namespace ArcTemplate.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
         {
-            var request = new GetAllProductsRequest();
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(new GetAllProductsQuery());
 
             if (!response.Any())
             {

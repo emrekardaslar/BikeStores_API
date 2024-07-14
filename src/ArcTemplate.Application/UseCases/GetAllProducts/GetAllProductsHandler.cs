@@ -8,9 +8,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ArcTemplate.Application.UseCases.GetAllProducts
 {
-    public class GetAllProductsRequest : IRequest<IEnumerable<Product>> { }
+    public class GetAllProductsQuery : IRequest<IEnumerable<Product>> { }
 
-    public class GetAllProductsHandler : IRequestHandler<GetAllProductsRequest, IEnumerable<Product>>
+    public class GetAllProductsHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
     {
         private readonly IProductRepository _productRepository;
         private readonly ILogger<GetAllProductsHandler> _logger;
@@ -21,7 +21,7 @@ namespace ArcTemplate.Application.UseCases.GetAllProducts
             _logger = logger;
         }
 
-        public async Task<IEnumerable<Product>> Handle(GetAllProductsRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var products = _productRepository.GetAllProducts();
 
