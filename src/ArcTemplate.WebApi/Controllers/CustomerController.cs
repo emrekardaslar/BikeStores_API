@@ -19,8 +19,7 @@ namespace ArcTemplate.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomer(int id)
         {
-            var request = new GetCustomerRequest { Id = id };
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(new GetCustomerQuery { Id = id });
             return Ok(response);
         }
     }

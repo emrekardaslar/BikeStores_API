@@ -2,7 +2,7 @@ using MediatR;
 
 namespace ArcTemplate.Application.UseCases.GetCustomer
 {
-    public class GetCustomerRequest : IRequest<GetCustomerResponse>
+    public class GetCustomerQuery : IRequest<GetCustomerResponse>
     {
         public int Id { get; set; }
     }
