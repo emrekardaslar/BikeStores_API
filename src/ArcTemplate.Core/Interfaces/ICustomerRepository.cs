@@ -5,5 +5,7 @@ namespace ArcTemplate.Core.Interfaces
     public interface ICustomerRepository
     {
         Customer GetCustomerById(int id);
+        Task<IEnumerable<Order>> GetCustomerOrdersByEmailAsync(string email);
+
     }
 }
