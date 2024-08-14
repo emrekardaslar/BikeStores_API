@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using ArcTemplate.Application.UseCases.GetCustomer;
-using System.Threading.Tasks;
 using ArcTemplate.Application.UseCases.GetCustomerOrdersByEmail;
 
 namespace ArcTemplate.WebApi.Controllers

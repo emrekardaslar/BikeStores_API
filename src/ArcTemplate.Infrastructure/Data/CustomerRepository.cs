@@ -1,14 +1,10 @@
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using Dapper;
 using ArcTemplate.Core.Entities;
 using ArcTemplate.Core.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using ArcTemplate.Application.UseCases.GetCustomerOrdersByEmail;
 using System.Text;
 
 namespace ArcTemplate.Infrastructure.Data

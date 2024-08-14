@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using ArcTemplate.Application.UseCases.GetProduct;
-using System.Threading.Tasks;
 using ArcTemplate.Application.UseCases.GetAllProducts;
 
 namespace ArcTemplate.WebApi.Controllers
