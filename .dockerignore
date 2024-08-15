@@ -1,0 +1,21 @@
+# Ignore the following files and directories:
+
+# .NET build outputs
+**/bin/
+**/obj/
+
+# User-specific files
+**/*.user
+**/*.rsuser
+**/*.suo
+
+# Logs
+**/*.log
+
+# Temporary files
+**/[Tt]emp/
+**/*.tmp
+
+# Docker ignore files themselves
+Dockerfile
+.dockerignore
