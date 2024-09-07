@@ -22,8 +22,23 @@ namespace ArcTemplate.Infrastructure.Data
 
         public Customer GetCustomerById(int id)
         {
-            // Mock data
-            return new Customer { Id = id, Name = "Example Customer" };
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new { customer_id = id };
+
+                _logger.LogInformation($"Executing stored procedure get_customer_by_id with parameter: {id}");
+
+                var customer = connection.Query(
+                   "get_customer_by_id",
+                   parameters,
+                   commandType: CommandType.StoredProcedure
+                ).Select(row => new Customer { Id = row.customer_id, Name = row.first_name, Email=row.email }).FirstOrDefault();
+
+                if (customer == null) {
+                    _logger.LogError($"No customer found with id: {id}");
+                }
+                return customer;
+            }
         }
 
         public async Task<IEnumerable<Order>> GetCustomerOrdersByEmailAsync(string email)

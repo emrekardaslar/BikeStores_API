@@ -17,7 +17,7 @@ namespace ArcTemplate.Application.UseCases.GetCustomer
         public Task<GetCustomerResponse> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
         {
             var customer = _customerRepository.GetCustomerById(request.Id);
-            return Task.FromResult(new GetCustomerResponse { Id = customer.Id, Name = customer.Name });
+            return Task.FromResult(new GetCustomerResponse { Id = customer.Id, Name=customer.Name, Email = customer.Email});
         }
     }
 }
