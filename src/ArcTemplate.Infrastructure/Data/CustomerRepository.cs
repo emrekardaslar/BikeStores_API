@@ -20,7 +20,7 @@ namespace ArcTemplate.Infrastructure.Data
             _logger = logger;
         }
 
-        public Customer GetCustomerById(int id)
+        public async Task<Customer> GetCustomerById(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -28,15 +28,24 @@ namespace ArcTemplate.Infrastructure.Data
 
                 _logger.LogInformation($"Executing stored procedure get_customer_by_id with parameter: {id}");
 
-                var customer = connection.Query(
-                   "get_customer_by_id",
-                   parameters,
-                   commandType: CommandType.StoredProcedure
-                ).Select(row => new Customer { Id = row.customer_id, Name = row.first_name, Email=row.email }).FirstOrDefault();
+                var customers = await connection.QueryAsync(
+                    "get_customer_by_id",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
 
-                if (customer == null) {
+                var customer = customers.Select(row => new Customer
+                {
+                    Id = row.customer_id,
+                    Name = row.first_name,
+                    Email = row.email
+                }).FirstOrDefault();
+
+                if (customer == null)
+                {
                     _logger.LogError($"No customer found with id: {id}");
                 }
+
                 return customer;
             }
         }

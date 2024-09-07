@@ -14,10 +14,20 @@ namespace ArcTemplate.Application.UseCases.GetCustomer
             _customerRepository = customerRepository;
         }
 
-        public Task<GetCustomerResponse> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
+        public async Task<GetCustomerResponse> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
         {
-            var customer = _customerRepository.GetCustomerById(request.Id);
-            return Task.FromResult(new GetCustomerResponse { Id = customer.Id, Name=customer.Name, Email = customer.Email});
+            var customer = await _customerRepository.GetCustomerById(request.Id);
+            if (customer == null)
+            {
+                throw new KeyNotFoundException($"Customer with ID {request.Id} not found.");
+            }
+
+            return new GetCustomerResponse
+            {
+                Id = customer.Id,
+                Name = customer.Name,
+                Email = customer.Email
+            };
         }
     }
 }
