@@ -18,11 +18,7 @@ namespace ArcTemplate.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IBrandRepository, BrandRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-
+            AddRepositories(services);
 
             // Add MediatR services
             services.AddMediatR(typeof(ArcTemplate.Application.UseCases.GetCustomer.GetCustomerHandler).GetTypeInfo().Assembly);
@@ -61,6 +57,14 @@ namespace ArcTemplate.WebApi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "BikeStore API V1");
                 c.RoutePrefix = string.Empty; // Serve Swagger UI at the app's root
             });
+        }
+        
+        public void AddRepositories(IServiceCollection services)
+        {
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
     }
 }
