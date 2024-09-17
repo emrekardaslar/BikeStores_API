@@ -1,23 +1,28 @@
-using System.Threading;
-using System.Threading.Tasks;
 using MediatR;
 using ArcTemplate.Core.Interfaces;
+using AutoMapper;
 
 namespace ArcTemplate.Application.UseCases.GetProduct
 {
     public class GetProductHandler : IRequestHandler<GetProductQuery, GetProductResponse>
     {
         private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public GetProductHandler(IProductRepository productRepository)
+        public GetProductHandler(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
         public Task<GetProductResponse> Handle(GetProductQuery request, CancellationToken cancellationToken)
         {
             var product = _productRepository.GetProductById(request.Id);
-            return Task.FromResult(new GetProductResponse { Id = product.Id, Name = product.Name, Price = product.Price, BrandId = product.BrandId });
+
+            // Use AutoMapper to map the domain entity to the response model
+            var response = _mapper.Map<GetProductResponse>(product);
+
+            return Task.FromResult(_mapper.Map<GetProductResponse>(product));
         }
     }
 }

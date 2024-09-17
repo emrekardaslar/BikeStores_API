@@ -20,6 +20,8 @@ namespace ArcTemplate.WebApi
             services.AddControllers();
             AddRepositories(services);
 
+            // Register AutoMapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             // Add MediatR services
             services.AddMediatR(typeof(ArcTemplate.Application.UseCases.GetCustomer.GetCustomerHandler).GetTypeInfo().Assembly);
 
