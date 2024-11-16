@@ -15,13 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStores.Core", "src\Bike
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4435CD03-7E7F-46F6-93E2-C53A147400A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcTemplate.Core.Tests", "tests\ArcTemplate.Core.Tests\ArcTemplate.Core.Tests.csproj", "{AE094C44-6AAE-4D54-92AD-A518B8C7B931}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStores.Core.Tests", "tests\BikeStores.Core.Tests\BikeStores.Core.Tests.csproj", "{AE094C44-6AAE-4D54-92AD-A518B8C7B931}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcTemplate.Application.Tests", "tests\ArcTemplate.Application.Tests\ArcTemplate.Application.Tests.csproj", "{2AD96A3E-92F1-4565-9E77-2BAE42074B9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStores.Application.Tests", "tests\BikeStores.Application.Tests\BikeStores.Application.Tests.csproj", "{2AD96A3E-92F1-4565-9E77-2BAE42074B9C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcTemplate.Infrastructure.Tests", "tests\ArcTemplate.Infrastructure.Tests\ArcTemplate.Infrastructure.Tests.csproj", "{9F808BC6-3D5B-47D4-BE5D-F50F1D9A1E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStores.Infrastructure.Tests", "tests\BikeStores.Infrastructure.Tests\BikeStores.Infrastructure.Tests.csproj", "{9F808BC6-3D5B-47D4-BE5D-F50F1D9A1E07}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcTemplate.WebApi.Tests", "tests\ArcTemplate.WebApi.Tests\ArcTemplate.WebApi.Tests.csproj", "{27DD7952-346C-4B95-AFC9-67C15CD9E2A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeStores.API.Tests", "tests\BikeStores.API.Tests\BikeStores.API.Tests.csproj", "{27DD7952-346C-4B95-AFC9-67C15CD9E2A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C505E1A0-8BC1-4E51-B227-97AA8F994CB7}"
 	ProjectSection(SolutionItems) = preProject

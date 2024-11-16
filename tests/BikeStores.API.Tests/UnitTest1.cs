@@ -1,4 +1,4 @@
-namespace ArcTemplate.Infrastructure.Tests;
+namespace BikeStores.API.Tests;
 
 public class UnitTest1
 {

@@ -1,7 +1,7 @@
 using Xunit;
 using BikeStores.Core.Entities;
 
-namespace ArcTemplate.Core.Tests
+namespace BikeStores.Core.Tests
 {
     public class CustomerTests
     {
