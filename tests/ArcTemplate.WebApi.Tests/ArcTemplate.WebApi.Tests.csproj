@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ArcTemplate.WebApi\ArcTemplate.WebApi.csproj" />
+    <ProjectReference Include="..\..\src\BikeStores.API\BikeStores.API.csproj" />
   </ItemGroup>
 
 </Project>

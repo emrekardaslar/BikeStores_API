@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ArcTemplate.Application\ArcTemplate.Application.csproj" />
+    <ProjectReference Include="..\..\src\BikeStores.Application\BikeStores.Application.csproj" />
   </ItemGroup>
 
 </Project>

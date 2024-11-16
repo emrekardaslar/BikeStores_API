@@ -1,5 +1,5 @@
 using Xunit;
-using ArcTemplate.Core.Entities;
+using BikeStores.Core.Entities;
 
 namespace ArcTemplate.Core.Tests
 {
